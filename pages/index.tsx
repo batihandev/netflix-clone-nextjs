@@ -35,7 +35,11 @@ const Home = ({
   const showModal = useRecoilValue(modalState);
   if (loading) return null;
   return (
-    <div className="relative h-screen bg-gradient-to-b lg:h-[140v]">
+    <div
+      className={`relative h-screen bg-gradient-to-b lg:h-[140v]${
+        showModal && "!h-screen overflow-hidden"
+      } `}
+    >
       <Head>
         <title>Home -Netflix</title>
         <link rel="icon" href="/favicon.ico" />
