@@ -4,4 +4,5 @@ module.exports = {
   images: {
     domains: ["image.tmdb.org", "rb.gy"],
   },
+  transpilePackages: ["@stripe/firestore-stripe-payments"],
 };
