@@ -120,15 +120,22 @@ function Modal() {
         >
           <XIcon className="h-6 w-6" />
         </button>
-        <div className="relative pt-[56.25%]">
-          <ReactPlayer
-            url={`https://www.youtube.com/watch?v=${trailer}`}
-            width="100%"
-            height="100%"
-            style={{ position: "absolute", top: "0", left: "0" }}
-            playing
-            muted={muted}
-          />
+        <div className="relative bg-gray-800 pt-[56.25%]">
+          {trailer ? (
+            <ReactPlayer
+              url={`https://www.youtube.com/watch?v=${trailer}`}
+              width="100%"
+              height="100%"
+              style={{ position: "absolute", top: "0", left: "0" }}
+              playing
+              muted={muted}
+            />
+          ) : (
+            <div className="absolute top-1/2 right-1/2 translate-x-1/2 translate-y-1/2 text-lg">
+              Video not found
+            </div>
+          )}
+
           <div className="absolute bottom-10 flex w-full items-center justify-between px-10">
             <div className="flex space-x-2">
               <button className="flex items-center gap-x-2 rounded bg-white px-8 text-xl font-bold text-black transition hover:bg-[#e6e6e6]">

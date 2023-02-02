@@ -14,6 +14,7 @@ interface Inputs {
 export default function login() {
   const [login, setLogin] = useState(false);
   const { signIn, signUp } = useAuth();
+  const [signUpNow, setSignUpNow] = useState(false);
   const {
     register,
     handleSubmit,
@@ -53,12 +54,15 @@ export default function login() {
         onSubmit={handleSubmit(onSubmit)}
         className="relative mt-24 space-y-8 rounded bg-black/75 py-10 px-6 md:mt-0 md:max-w-md md:px-14"
       >
-        <h1 className="text-4xl font-semibold">Sign In</h1>
+        <h1 className="text-4xl font-semibold">
+          THIS IS A CLONE <b />
+          {signUpNow ? "Sign Up" : "Sign In"}
+        </h1>
         <div className="space-y-4">
           <label className="inline-block w-full">
             <input
               type="email"
-              placeholder="Email"
+              placeholder="test-email:test1@test.com"
               className="input"
               {...register("email", { required: true })}
             />
@@ -71,7 +75,7 @@ export default function login() {
           <label className="inline-block w-full">
             <input
               type="password"
-              placeholder="Password"
+              placeholder="test-password:test.123456"
               className="input"
               {...register("password", { required: true })}
             />
@@ -85,18 +89,18 @@ export default function login() {
         <button
           type="submit"
           className="w-full rounded bg-[#e50914] py-3 font-semibold"
-          onClick={() => setLogin(true)}
+          onClick={() => setLogin(signUpNow ? false : true)}
         >
-          Sign In
+          {signUpNow ? "Sign Up" : "Sign In"}
         </button>
         <div className="text-[gray]">
-          New to Netflix?{" "}
+          {signUpNow ? "Already have an account ?" : "New to Netflix ?"}
           <button
-            type="submit"
+            type="button"
             className="text-white hover:underline"
-            onClick={() => setLogin(false)}
+            onClick={() => setSignUpNow(!signUpNow)}
           >
-            Sign up now
+            {signUpNow ? "Sign In Now " : "Sign Up Now"}
           </button>
         </div>
       </form>
