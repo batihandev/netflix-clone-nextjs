@@ -1,11 +1,11 @@
 import {
   CheckIcon,
   PlusIcon,
-  ThumbUpIcon,
-  VolumeOffIcon,
-  XIcon,
-} from "@heroicons/react/outline";
-import { VolumeUpIcon } from "@heroicons/react/solid";
+  HandThumbUpIcon,
+  SpeakerXMarkIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
+import { SpeakerWaveIcon } from "@heroicons/react/24/solid";
 import MuiModal from "@mui/material/Modal";
 import {
   collection,
@@ -118,23 +118,27 @@ function Modal() {
           onClick={handleClose}
           className="modalButton absolute right-5 top-5 !z-40 h-9 w-9 border-none bg-[#181818] hover:bg-[#181818]"
         >
-          <XIcon className="h-6 w-6" />
+          <XMarkIcon className="h-6 w-6" />
         </button>
         <div className="relative bg-gray-800 pt-[56.25%]">
-          {trailer ? (
-            <ReactPlayer
-              url={`https://www.youtube.com/watch?v=${trailer}`}
-              width="100%"
-              height="100%"
-              style={{ position: "absolute", top: "0", left: "0" }}
-              playing
-              muted={muted}
-            />
-          ) : (
-            <div className="absolute top-1/2 right-1/2 translate-x-1/2 translate-y-1/2 text-lg">
-              Video not found
-            </div>
-          )}
+          <div>
+            {trailer ? (
+              <div>
+                <ReactPlayer
+                  url={`https://www.youtube.com/watch?v=${trailer}`}
+                  width="100%"
+                  height="100%"
+                  style={{ position: "absolute", top: "0", left: "0" }}
+                  playing
+                  muted={muted}
+                />
+              </div>
+            ) : (
+              <div className="absolute right-1/2 top-1/2 translate-x-1/2 translate-y-1/2 text-lg">
+                Video not found
+              </div>
+            )}
+          </div>
 
           <div className="absolute bottom-10 flex w-full items-center justify-between px-10">
             <div className="flex space-x-2">
@@ -150,14 +154,14 @@ function Modal() {
                 )}
               </button>
               <button className="modalButton">
-                <ThumbUpIcon className="h-7 w-7" />
+                <HandThumbUpIcon className="h-7 w-7" />
               </button>
             </div>
             <button className="modalButton" onClick={() => setMuted(!muted)}>
               {muted ? (
-                <VolumeOffIcon className="h-6 w-6" />
+                <SpeakerXMarkIcon className="h-6 w-6" />
               ) : (
-                <VolumeUpIcon className="h-6 w-6" />
+                <SpeakerWaveIcon className="h-6 w-6" />
               )}
             </button>
           </div>

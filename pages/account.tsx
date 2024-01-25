@@ -75,16 +75,24 @@ function Account({ products }: Props) {
 export default Account;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const products = await getProducts(payments, {
-    includePrices: true,
-    activeOnly: true,
-  })
-    .then((res) => res)
-    .catch((error) => console.log(error.message));
+  try {
+    const products = await getProducts(payments, {
+      includePrices: true,
+      activeOnly: true,
+    });
 
-  return {
-    props: {
-      products,
-    },
-  };
+    return {
+      props: {
+        products,
+      },
+    };
+  } catch (error: any) {
+    console.error("Error fetching products:", error.message);
+
+    return {
+      props: {
+        products: null, // Return null in case of an error
+      },
+    };
+  }
 };

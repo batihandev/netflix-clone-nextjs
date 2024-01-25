@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { baseUrl } from "../constants/movie";
 import { Movie } from "../typings";
 import { FaPlay } from "react-icons/fa";
-import { InformationCircleIcon } from "@heroicons/react/solid";
+import { InformationCircleIcon } from "@heroicons/react/24/solid";
 import { useRecoilState } from "recoil";
 import { modalState, movieState } from "../atoms/modalAtoms";
 

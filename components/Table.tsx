@@ -1,4 +1,4 @@
-import { CheckIcon, XCircleIcon } from "@heroicons/react/outline";
+import { CheckIcon, XCircleIcon } from "@heroicons/react/24/outline";
 import { Product } from "@stripe/firestore-stripe-payments";
 
 interface Props {
