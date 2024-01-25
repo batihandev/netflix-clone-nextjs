@@ -17,7 +17,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-console.log(firebaseConfig.apiKey, "api keys");
+
 const app = !getApps().length
   ? initializeApp(firebaseConfig)
   : getApp(undefined);
