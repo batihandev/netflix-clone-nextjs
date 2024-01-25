@@ -30,12 +30,12 @@ export default function login() {
   return (
     <div className="relative flex h-screen w-screen flex-col bg-black md:items-center md:justify-center md:bg-transparent">
       <Head>
-        <title>Netflix</title>
+        <title>Netflix Clone</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Image
-        src="https://rb.gy/p2hphi"
+        src="/clone-bg.jpg"
         fill
         sizes=""
         alt=""
@@ -44,7 +44,7 @@ export default function login() {
       />
 
       <img
-        src="https://rb.gy/ulxxee"
+        src="/logo.png"
         className="absolute left-4 top-4 cursor-pointer object-contain md:left-10 md:top-6"
         width={150}
         height={150}
@@ -52,7 +52,7 @@ export default function login() {
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="relative mt-24 space-y-8 rounded bg-black/75 py-10 px-6 md:mt-0 md:max-w-md md:px-14"
+        className="relative mt-24 space-y-8 rounded bg-black/75 px-6 py-10 md:mt-0 md:max-w-md md:px-14"
       >
         <h1 className="text-4xl font-semibold">
           THIS IS A CLONE <b />
@@ -94,7 +94,7 @@ export default function login() {
           {signUpNow ? "Sign Up" : "Sign In"}
         </button>
         <div className="text-[gray]">
-          {signUpNow ? "Already have an account ?" : "New to Netflix ?"}
+          {signUpNow ? "Already have an account ?" : "New to Netflix Clone ?"}
           <button
             type="button"
             className="text-white hover:underline"

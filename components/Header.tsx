@@ -23,7 +23,7 @@ function Header() {
     <header className={`${isScrolled && "bg-[#141414]"}`}>
       <div className="flex items-center space-x-2 md:space-x-10">
         <img
-          src="https://rb.gy/ulxxee"
+          src="/logo.png"
           width={100}
           height={100}
           className="cursor-pointer object-contain"
@@ -43,11 +43,7 @@ function Header() {
         <p className="hidden lg:inline">Kids</p>
         <BellIcon className="h-6 w-6" />
         <Link href="/account">
-          <img
-            src="https://rb.gy/g1pwyx"
-            alt=""
-            className="cursor-pointer rounded"
-          />
+          <img src="/account.png" alt="" className="cursor-pointer rounded" />
         </Link>
       </div>
     </header>

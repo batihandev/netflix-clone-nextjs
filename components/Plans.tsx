@@ -23,14 +23,14 @@ function Plans({ products }: Props) {
   return (
     <div>
       <Head>
-        <title>Netflix</title>
+        <title>Netflix Clone</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <header className="border-b border-white/10 bg-[#141414]">
         <Link href="/">
           <img
-            src="https://rb.gy/ulxxee"
-            alt="Netflix"
+            src="/logo.png"
+            alt="Netflix Clone"
             width={150}
             height={90}
             className="cursor-pointer object-contain"
@@ -43,7 +43,7 @@ function Plans({ products }: Props) {
           Sign Out
         </button>
       </header>
-      <main className="mx-auto max-w-5xl px-28 pt-28 pb-12 transition-all md:px-10">
+      <main className="mx-auto max-w-5xl px-28 pb-12 pt-28 transition-all md:px-10">
         <h1 className="mb-3 text-3xl font-medium">
           Choose the plan that's right for you
         </h1>

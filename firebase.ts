@@ -7,16 +7,19 @@ import { getAuth } from "firebase/auth"; // Import the functions you need from t
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyA9qUkz3chGyR1r8hMqBcJeimO5Z3c5lJk",
+  apiKey: process.env.FIREBASE_API_KEY,
   authDomain: "nextflix-clone-nextjs.firebaseapp.com",
   projectId: "nextflix-clone-nextjs",
   storageBucket: "nextflix-clone-nextjs.appspot.com",
-  messagingSenderId: "241424584476",
-  appId: "1:241424584476:web:e192a72151073ba58674d9",
+  messagingSenderId: process.env.FIREBASE_MID,
+  appId: process.env.FIREBASE_AID,
 };
 
 // Initialize Firebase
-const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+
+const app = !getApps().length
+  ? initializeApp(firebaseConfig)
+  : getApp(undefined);
 const db = getFirestore();
 const auth = getAuth();
 
