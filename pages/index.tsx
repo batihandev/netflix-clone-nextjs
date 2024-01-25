@@ -1,7 +1,5 @@
 import { getProducts, Product } from "@stripe/firestore-stripe-payments";
-import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import { useRecoilValue } from "recoil";
 import { modalState, movieState } from "../atoms/modalAtoms";
 import Banner from "../components/Banner";
@@ -43,6 +41,7 @@ const Home = ({
   const subscription = useSubscription(user);
   const movie = useRecoilValue(movieState);
   const list = useList(user?.uid);
+  console.log("test23");
   if (loading || subscription === null) return null;
 
   if (!subscription) return <Plans products={products} />;

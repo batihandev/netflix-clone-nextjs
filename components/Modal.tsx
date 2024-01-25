@@ -70,11 +70,20 @@ function Modal() {
   }, [movie]);
 
   useEffect(() => {
+    console.log("db movie id");
     if (user) {
-      return onSnapshot(
-        collection(db, "customers", user.uid, "myList"),
-        (snapshot) => setMovies(snapshot.docs)
+      console.log("here");
+      const myListCollectionRef = collection(
+        db,
+        "customers",
+        user.uid,
+        "myList"
       );
+      console.log(myListCollectionRef);
+      return onSnapshot(myListCollectionRef, (snapshot) => {
+        const moviesData = snapshot.docs.map((doc) => doc.data());
+        setMovies(moviesData);
+      });
     }
   }, [db, movie?.id]);
   useEffect(() => {
