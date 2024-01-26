@@ -59,7 +59,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         router.push("/");
         setLoading(false);
       })
-      .catch((error) => alert(error.message))
+      .catch((error) => {
+        alert(error.message);
+        throw error;
+      })
       .finally(() => setLoading(false));
   };
   const signIn = async (email: string, password: string) => {
@@ -70,7 +73,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         router.push("/");
         setLoading(false);
       })
-      .catch((error) => alert(error.message))
+      .catch((error) => {
+        alert(error.message);
+        throw error;
+      })
       .finally(() => setLoading(false));
   };
   const logout = async () => {

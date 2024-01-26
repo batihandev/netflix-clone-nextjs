@@ -13,18 +13,38 @@ interface Inputs {
 
 export default function login() {
   const [login, setLogin] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { signIn, signUp } = useAuth();
   const [signUpNow, setSignUpNow] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Inputs>();
+    setValue,
+  } = useForm<Inputs>({
+    defaultValues: {
+      email: "test1@test.com",
+      password: "test.123456",
+    },
+  });
+  const generateRandomEmail = () => {
+    const randomString = Math.random().toString(36).substring(7);
+    return `test-${randomString}@example.com`;
+  };
+  const handleRandomEmailClick = () => {
+    const randomEmail = generateRandomEmail();
+    setValue("email", randomEmail);
+  };
   const onSubmit: SubmitHandler<Inputs> = async ({ email, password }) => {
-    if (login) {
-      await signIn(email, password);
-    } else {
-      await signUp(email, password);
+    setLoading(true);
+    try {
+      if (login) {
+        await signIn(email, password).catch(() => setLoading(false));
+      } else {
+        await signUp(email, password).catch(() => setLoading(false));
+      }
+    } catch {
+      setLoading(false);
     }
   };
   return (
@@ -59,11 +79,13 @@ export default function login() {
           {signUpNow ? "Sign Up" : "Sign In"}
         </h1>
         <div className="space-y-4">
+          <div>Inputs are disabled so i dont collect any data.</div>
           <label className="inline-block w-full">
             <input
               type="email"
               placeholder="test-email:test1@test.com"
               className="input"
+              disabled
               {...register("email", { required: true })}
             />
             {errors.email && (
@@ -77,6 +99,7 @@ export default function login() {
               type="password"
               placeholder="test-password:test.123456"
               className="input"
+              disabled
               {...register("password", { required: true })}
             />
             {errors.password && (
@@ -91,8 +114,15 @@ export default function login() {
           className="w-full rounded bg-[#e50914] py-3 font-semibold"
           onClick={() => setLogin(signUpNow ? false : true)}
         >
-          {signUpNow ? "Sign Up" : "Sign In"}
+          {loading ? "Loading..." : signUpNow ? "Sign Up" : "Sign In"}
         </button>
+        {signUpNow ? (
+          <button type="button" onClick={handleRandomEmailClick}>
+            Generate Random Email
+          </button>
+        ) : (
+          ""
+        )}
         <div className="text-[gray]">
           {signUpNow ? "Already have an account ?" : "New to Netflix Clone ?"}
           <button
